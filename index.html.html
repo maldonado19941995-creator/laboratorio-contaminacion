@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorio Virtual de Contaminación</title>
+<style>
+:root{--green:#16834b;--dark:#103b2a;--blue:#1676a8;--light:#eef8f1;--gold:#f2c94c}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:#f6faf7;line-height:1.55}
+.hero{background:linear-gradient(135deg,#0d6b3b,#16834b 55%,#25a15e);color:white;padding:58px 20px;text-align:center}
+.hero .emoji{font-size:52px}.hero h1{font-size:42px;margin:8px 0}.hero p{font-size:19px;max-width:850px;margin:0 auto 22px}
+.btn{display:inline-block;padding:13px 22px;border-radius:25px;background:white;color:var(--green);font-weight:bold;text-decoration:none;border:0;cursor:pointer}
+nav{position:sticky;top:0;z-index:10;background:white;box-shadow:0 2px 12px #0002;padding:10px;text-align:center}
+nav a{color:var(--dark);text-decoration:none;font-weight:bold;margin:0 10px;font-size:14px}
+.container{max-width:1120px;margin:auto;padding:28px 18px}
+.section{margin-bottom:32px}
+.section h2{font-size:29px;margin-bottom:8px;color:var(--green)}
+.section-intro{color:#4b6358}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:white;border-radius:18px;padding:20px;box-shadow:0 4px 16px #00000012;border:1px solid #e2eee6}
+.card .icon{font-size:38px}.card h3{margin:8px 0;color:var(--green)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:white;border-radius:15px;padding:18px;text-align:center;border-top:5px solid var(--green)}
+.number{font-size:26px;font-weight:bold;color:var(--blue)}
+.hypothesis{background:#fff8d9;border-radius:18px;padding:24px;border:1px solid #f0db75}
+textarea,input[type=text]{width:100%;border:1px solid #bfd0c5;border-radius:10px;padding:11px;font:inherit}
+.lab{background:#eaf5ff;border-radius:20px;padding:24px;border:1px solid #c9e0ee}
+.controls{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.control{background:white;border-radius:14px;padding:16px}
+label{font-weight:bold;display:block;margin-bottom:7px}
+input[type=range]{width:100%;accent-color:var(--green)}
+.value{color:var(--green);font-size:20px}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.resultbox{background:white;border-radius:14px;padding:18px}
+.big{font-size:38px;font-weight:bold;color:var(--green)}
+.bar{height:18px;background:#e2e9e5;border-radius:10px;overflow:hidden}.bar span{display:block;height:100%;background:var(--green);width:50%}
+.actions{margin-top:15px}.actionbtn{padding:11px 18px;border:0;border-radius:10px;background:var(--green);color:white;font-weight:bold;cursor:pointer}.actionbtn.blue{background:var(--blue)}
+table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden}
+th,td{padding:11px;border:1px solid #d6e2da;text-align:left}th{background:var(--green);color:white}
+.challenge{background:linear-gradient(135deg,#103b2a,#16834b);color:white;border-radius:20px;padding:28px}
+.challenge h2{color:white}
+.reflection{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.question{background:white;border-radius:14px;padding:17px;box-shadow:0 2px 10px #0001}
+footer{background:#103b2a;color:white;text-align:center;padding:28px;margin-top:30px}
+@media(max-width:800px){.grid,.steps,.controls,.results,.reflection{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid,.steps,.controls,.results,.reflection{grid-template-columns:1fr}.hero h1{font-size:31px}nav{overflow:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+<div class="emoji">♻️🌎🔬</div>
+<h1>Laboratorio Virtual de Contaminación</h1>
+<p>¿Qué pasaría si cambiamos nuestras acciones? Experimenta, observa, analiza y descubre cómo nuestras decisiones pueden afectar al ambiente.</p>
+<a class="btn" href="#laboratorio">🧪 Comenzar el laboratorio</a>
+</header>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#proposito">Propósito</a>
+<a href="#hipotesis">Hipótesis</a>
+<a href="#laboratorio">Simulador</a>
+<a href="#registro">Resultados</a>
+<a href="#reto">Reto</a>
+<a href="#evaluacion">Evaluación</a>
+</nav>
+
+<main class="container">
+
+<section class="section" id="proposito">
+<h2>🌎 ¿Qué encontrarás aquí?</h2>
+<p class="section-intro">En este laboratorio podrás experimentar virtualmente con situaciones relacionadas con la contaminación y analizar qué sucede cuando modificamos diferentes variables ambientales.</p>
+<div class="grid">
+<div class="card"><div class="icon">🗑️</div><h3>Residuos</h3><p>Explora qué ocurre cuando aumenta la cantidad de residuos.</p></div>
+<div class="card"><div class="icon">♻️</div><h3>Reciclaje</h3><p>Observa cómo cambia el resultado cuando aumenta o disminuye el reciclaje.</p></div>
+<div class="card"><div class="icon">🚗</div><h3>Vehículos</h3><p>Analiza la relación entre la cantidad de vehículos y la calidad del aire.</p></div>
+<div class="card"><div class="icon">🌳</div><h3>Áreas verdes</h3><p>Investiga qué ocurre cuando disminuyen o aumentan las áreas verdes.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2>🧑‍🔬 ¿Cómo trabajarás?</h2>
+<div class="steps">
+<div class="step"><div class="number">01</div><h3>🔎 Observa</h3><p>Identifica las variables.</p></div>
+<div class="step"><div class="number">02</div><h3>⚙️ Experimenta</h3><p>Modifica una variable.</p></div>
+<div class="step"><div class="number">03</div><h3>📊 Analiza</h3><p>Compara los resultados.</p></div>
+<div class="step"><div class="number">04</div><h3>💡 Concluye</h3><p>Explica lo aprendido.</p></div>
+</div>
+</section>
+
+<section class="section hypothesis" id="hipotesis">
+<h2>🧠 Antes de comenzar: formula tu hipótesis</h2>
+<p><b>Pregunta de investigación:</b> ¿Qué pasaría con el ambiente si aumentamos los residuos, reducimos el reciclaje, aumentamos la cantidad de vehículos o disminuimos las áreas verdes?</p>
+<textarea rows="4" placeholder="Escribe aquí tu hipótesis..."></textarea>
+<p><small><b>Ejemplo:</b> Si aumenta la cantidad de residuos y disminuye el reciclaje, entonces aumentará el impacto ambiental porque habrá más desechos sin gestionar adecuadamente.</small></p>
+</section>
+
+<section class="section lab" id="laboratorio">
+<h2>🧪 Laboratorio: «¿Qué pasaría si...?»</h2>
+<p>Modifica las variables y pulsa <b>Simular</b>. Para una comparación más justa, primero cambia una variable y mantén las demás constantes.</p>
+<div class="controls">
+<div class="control"><label>🗑️ Aumento de residuos: <span id="resV" class="value">50%</span></label><input id="res" type="range" min="0" max="100" value="50"></div>
+<div class="control"><label>♻️ Nivel de reciclaje: <span id="recV" class="value">50%</span></label><input id="rec" type="range" min="0" max="100" value="50"></div>
+<div class="control"><label>🚗 Cantidad de vehículos: <span id="vehV" class="value">50%</span></label><input id="veh" type="range" min="0" max="100" value="50"></div>
+<div class="control"><label>🌳 Áreas verdes: <span id="greenV" class="value">50%</span></label><input id="green" type="range" min="0" max="100" value="50"></div>
+</div>
+<div class="actions">
+<button class="actionbtn" onclick="simular()">🔎 Simular</button>
+<button class="actionbtn blue" onclick="reiniciar()">↺ Reiniciar</button>
+</div>
+<div class="results">
+<div class="resultbox">
+<h3>📊 Índice ambiental</h3>
+<div id="indice" class="big">50 / 100</div>
+<div class="bar"><span id="bar"></span></div>
+<p id="conclusion">Modifica las variables y observa los cambios.</p>
+</div>
+<div class="resultbox">
+<h3>🌍 Indicadores</h3>
+<p>Calidad del aire: <b id="aire">Media</b></p>
+<p>Gestión de residuos: <b id="residuos">Media</b></p>
+<p>Áreas verdes: <b id="verde">Media</b></p>
+<p>Presión ambiental: <b id="presion">Media</b></p>
+</div>
+</div>
+</section>
+
+<section class="section" id="registro">
+<h2>📊 Registro de resultados</h2>
+<p>Completa la tabla después de realizar cada experimento.</p>
+<table>
+<tr><th>Variable modificada</th><th>Resultado observado</th><th>Conclusión</th></tr>
+<tr><td>🗑️ Aumento de residuos</td><td contenteditable="true">Escribe tu observación...</td><td contenteditable="true">Escribe tu conclusión...</td></tr>
+<tr><td>♻️ Reducción del reciclaje</td><td contenteditable="true">Escribe tu observación...</td><td contenteditable="true">Escribe tu conclusión...</td></tr>
+<tr><td>🚗 Mayor cantidad de vehículos</td><td contenteditable="true">Escribe tu observación...</td><td contenteditable="true">Escribe tu conclusión...</td></tr>
+<tr><td>🌳 Disminución de áreas verdes</td><td contenteditable="true">Escribe tu observación...</td><td contenteditable="true">Escribe tu conclusión...</td></tr>
+</table>
+</section>
+
+<section class="section">
+<h2>🔬 Cuatro experimentos</h2>
+<div class="grid">
+<div class="card"><h3>Experimento 1</h3><p><b>Pregunta:</b> ¿Qué sucede si aumentamos los residuos?</p><p>Prueba diferentes niveles y registra el cambio.</p></div>
+<div class="card"><h3>Experimento 2</h3><p><b>Pregunta:</b> ¿Qué ocurre si disminuye el reciclaje?</p><p>Compara niveles altos, medios y bajos.</p></div>
+<div class="card"><h3>Experimento 3</h3><p><b>Pregunta:</b> ¿Cómo influye el aumento de vehículos?</p><p>Observa especialmente el indicador de calidad del aire.</p></div>
+<div class="card"><h3>Experimento 4</h3><p><b>Pregunta:</b> ¿Qué sucede cuando disminuyen las áreas verdes?</p><p>Compara comunidades con diferentes cantidades de vegetación.</p></div>
+</div>
+</section>
+
+<section class="section challenge" id="reto">
+<h2>🏆 Reto científico: ¡Mejora la comunidad!</h2>
+<p>Imagina que eres parte de un equipo de jóvenes científicos. Tu misión es encontrar una combinación de variables que produzca las mejores condiciones ambientales.</p>
+<p><b>Mi estrategia:</b></p>
+<p>Residuos: ______ % &nbsp; | &nbsp; Reciclaje: ______ % &nbsp; | &nbsp; Vehículos: ______ % &nbsp; | &nbsp; Áreas verdes: ______ %</p>
+<p><b>Resultado obtenido:</b> ______ / 100</p>
+<p><b>¿Por qué elegiste esta combinación?</b></p>
+<textarea rows="3" placeholder="Explica tu estrategia..."></textarea>
+</section>
+
+<section class="section">
+<h2>💡 Reflexionemos</h2>
+<div class="reflection">
+<div class="question">1. ¿Qué variable produjo mayor impacto?<br><br>________________________________</div>
+<div class="question">2. ¿Qué ocurrió cuando aumentó el reciclaje?<br><br>________________________________</div>
+<div class="question">3. ¿Qué relación observaste entre vehículos y aire?<br><br>________________________________</div>
+<div class="question">4. ¿Por qué son importantes las áreas verdes?<br><br>________________________________</div>
+<div class="question">5. ¿Tu hipótesis fue correcta?<br><br>________________________________</div>
+<div class="question">6. ¿Qué cambiarías en tu comunidad?<br><br>________________________________</div>
+</div>
+</section>
+
+<section class="section" id="evaluacion">
+<h2>📝 Autoevaluación</h2>
+<table>
+<tr><th>Criterio</th><th>Sí</th><th>En proceso</th><th>Aún no</th></tr>
+<tr><td>Comprendí el concepto de contaminación.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Formulé una hipótesis.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Realicé experimentos con el simulador.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Registré e interpreté resultados.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Elaboré conclusiones.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Propuse acciones ambientales.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+</table>
+</section>
+
+<section class="section">
+<h2>🌱 Mi compromiso ambiental</h2>
+div class="hypothesis">
+<p>Después de realizar el laboratorio, me comprometo a:</p>
+<textarea rows="3" placeholder="Escribe tu compromiso..."></textarea>
+</div>
+</section>
+
+</main>
+<footer>
+<strong>♻️ Laboratorio Virtual de Contaminación</strong>
+<p>Experimentar • Analizar • Concluir • Actuar</p>
+<p>Recurso educativo digital</p>
+</footer>
+
+<script>
+const ids=["res","rec","veh","green"];
+function updateLabels(){ids.forEach(id=>document.getElementById(id+"V").textContent=document.getElementById(id).value+"%")}
+ids.forEach(id=>document.getElementById(id).addEventListener("input",updateLabels));
+function level(v){return v>=75?"Alta":v>=45?"Media":"Baja"}
+function simular(){
+let r=+res.value,c=+rec.value,v=+veh.value,g=+green.value;
+let score=Math.round(100-r*.30-v*.25+c*.25+g*.30);
+score=Math.max(0,Math.min(100,score));
+indice.textContent=score+" / 100";bar.style.width=score+"%";
+aire.textContent=level(100-v);residuos.textContent=level(c);verde.textContent=level(g);
+let pressure=Math.round((r+v+(100-c)+(100-g))/4);presion.textContent=level(100-pressure);
+conclusion.textContent=score>=75?"Las condiciones simuladas favorecen un ambiente más saludable. Mantener el reciclaje y las áreas verdes ayuda a disminuir los impactos.":score>=45?"La situación es intermedia. Conviene reducir residuos y emisiones y aumentar el reciclaje y las áreas verdes.":"Las condiciones generan mayor presión ambiental. Es necesario reducir residuos y emisiones y fortalecer el reciclaje y las áreas verdes.";
+}
+function reiniciar(){ids.forEach(id=>document.getElementById(id).value=50);updateLabels();indice.textContent="50 / 100";bar.style.width="50%";aire.textContent="Media";residuos.textContent="Media";verde.textContent="Media";presion.textContent="Media";conclusion.textContent="Modifica las variables y observa los cambios."}
+updateLabels();
+</script>
+</body>
+</html>
